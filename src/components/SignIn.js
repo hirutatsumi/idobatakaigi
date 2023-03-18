@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import { CssBaseline } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
@@ -32,6 +32,15 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn({ setName }) {
+  const [disabled, setDisabeld] = useState(true);
+  const [string, setString] = useState("");
+  console.log({ disabled, string });
+
+  useEffect(() => {
+    const disabled = string === "";
+    setDisabeld(disabled);
+  }, [string]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -70,12 +79,15 @@ export default function SignIn({ setName }) {
               label="ニックネーム"
               name="name"
               autoFocus
+              onChange={(e) => setString(e.target.value)}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
+              color="primary"
               sx={{ mt: 3, mb: 2 }}
+              disabled={disabled}
             >
               はじめる
             </Button>
