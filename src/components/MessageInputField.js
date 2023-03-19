@@ -24,7 +24,7 @@ const MessageInputField = ({ name }) => {
           <Avatar src={avatarPath} />
         </Grid>
         <Grid xs={10}>
-          <MessageField setText={setText} text={text} />
+          <MessageField name={name} setText={setText} text={text} />
         </Grid>
         <Grid xs={1}>ボタン</Grid>
       </Grid>
