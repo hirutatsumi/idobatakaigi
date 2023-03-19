@@ -32,13 +32,13 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn({ setName }) {
-  const [disabled, setDisabeld] = useState(true);
+  const [disabled, setDisabled] = useState(true);
   const [string, setString] = useState("");
   console.log({ disabled, string });
 
   useEffect(() => {
     const disabled = string === "";
-    setDisabeld(disabled);
+    setDisabled(disabled);
   }, [string]);
 
   const handleSubmit = (event) => {
@@ -79,15 +79,18 @@ export default function SignIn({ setName }) {
               label="ニックネーム"
               name="name"
               autoFocus
-              onChange={(e) => setString(e.target.value)}
+              onChange={(event) => setString(event.target.value)}
             />
             <Button
-              type="submit"
+              type="button"
               fullWidth
               variant="contained"
               color="primary"
               sx={{ mt: 3, mb: 2 }}
               disabled={disabled}
+              onClick={() => {
+                setName(string);
+              }}
             >
               はじめる
             </Button>
